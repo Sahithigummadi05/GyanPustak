@@ -1,143 +1,96 @@
-============================================================
-  GyanPustak – Online Textbook Platform
-  Flask + Jinja2 + MySQL
-============================================================
+GyanPustak – Online Textbook Platform
 
-REQUIREMENTS
-------------
-- Python 3.8+
-- MySQL 5.7+ or 8.0+
-- pip
+GyanPustak is a web-based platform that allows college students to buy, rent, and explore textbooks. The system provides access to new, used, and electronic books. It supports two types of users: students and employees (customer support, administrators, and super administrators).
 
-SETUP STEPS
------------
+The application is built using Flask, Jinja2, and MySQL.
 
-STEP 1: Set up the MySQL database
------------------------------------
-Open MySQL Workbench or the MySQL command line and run:
+Features
+Student
+Browse and search books by title, author, or category
+Add books to cart (buy or rent)
+Checkout and place orders
+View order history
+Write and manage reviews
+Submit support tickets
+Update profile
+Customer Support
+View all support tickets
+Assign new tickets to administrators
+Create tickets
+Cancel eligible orders
+Administrator
+Manage books (add, edit, delete)
+Handle assigned tickets
+Link books to courses
+Super Administrator
+Add and remove employees
+Manage administrators and support staff
+Tech Stack
+Frontend: HTML, CSS, JavaScript, Jinja2
+Backend: Python (Flask)
+Database: MySQL
+Connector: MySQL Connector for Python
 
-    mysql -u root -p < schema.sql
+Setup Instructions
+1. Clone the Repository
+git clone https://github.com/your-username/gyanpustak.git
+cd gyanpustak
+2. Setup Database
+mysql -u root -p < schema.sql
+3. Install Dependencies
+pip install -r requirements.txt
+4. Configure Database (Optional)
 
-Or open schema.sql in MySQL Workbench and execute it.
-This creates the database, all tables, and inserts sample data.
+Windows:
 
-STEP 2: Install Python dependencies
---------------------------------------
-Open a terminal in this folder and run:
+set DB_HOST=localhost
+set DB_USER=root
+set DB_PASSWORD=yourpassword
 
-    pip install -r requirements.txt
+Mac/Linux:
 
-STEP 3: Configure database connection (if needed)
---------------------------------------------------
-If your MySQL username/password/host differs from defaults,
-set these environment variables before running:
+export DB_HOST=localhost
+export DB_USER=root
+export DB_PASSWORD=yourpassword
+5. Run the Application
+python app.py
 
-    Windows (Command Prompt):
-        set DB_HOST=localhost
-        set DB_USER=root
-        set DB_PASSWORD=yourpassword
+Open in browser:
 
-    Mac/Linux (Terminal):
-        export DB_HOST=localhost
-        export DB_USER=root
-        export DB_PASSWORD=yourpassword
+http://localhost:5000
+Login Credentials
+Student
+URL: /student/login
+Example:
+Student ID: 1
+Name: Rohit Singh
 
-Default values: host=localhost, user=root, password=(empty)
+Register:
 
-STEP 4: Run the Flask app
---------------------------
-    python app.py
+/student/register
+Employee
+Role	Email	Password
+Super Admin	superadmin@gyanpustak.com
+	superadmin123
+Administrator	arun.admin@gyanpustak.com
+	admin123
+Customer Support	meena.cs@gyanpustak.com
+	cs123
+System Overview
+Role-based authentication using sessions
+Book catalog with search and filtering
+Cart and order management system
+Review and rating functionality
+Ticket management with status tracking
+Assumptions
+Users have access to a web browser (Chrome or similar)
+MySQL server is available
+Python 3.8 or higher is installed
+Future Improvements
+Payment gateway integration
+Email notifications
+Recommendation system
+Improved UI responsiveness
 
-Then open your browser and go to:
-    http://localhost:5000
-
-============================================================
-LOGIN CREDENTIALS
-============================================================
-
-STUDENT LOGIN  (URL: /student/login)
-  Enter Student ID (number) + Full Name
-  Sample: Student ID = 1, Name = Rohit Singh
-  Sample: Student ID = 2, Name = Anjali Mehta
-
-  To register a new student: http://localhost:5000/student/register
-
-EMPLOYEE LOGIN  (URL: /employee/login)
-  Used for: Customer Support, Admin, Super Admin
-
-  Role              Email                           Password
-  ----------------------------------------------------------------
-  Super Admin       superadmin@gyanpustak.com       superadmin123
-  Administrator     arun.admin@gyanpustak.com       admin123
-  Customer Support  meena.cs@gyanpustak.com         cs123
-
-============================================================
-ROLE CAPABILITIES SUMMARY
-============================================================
-
-STUDENT
-  - Browse / search books (by title, author, category)
-  - Add books to cart (Buy or Rent)
-  - Checkout with payment info
-  - View order history
-  - Write reviews for purchased books
-  - Submit support tickets
-  - Edit profile
-
-CUSTOMER SUPPORT
-  - View all tickets (all statuses)
-  - Modify only "New" tickets → assign to admin
-  - Create new tickets themselves
-  - View and cancel orders (except Shipped)
-
-ADMINISTRATOR
-  - View/update tickets with status Assigned / In-Process / Completed
-  - Add, edit, delete books
-  - Link books to courses
-
-SUPER ADMINISTRATOR
-  - View all admins and CS staff
-  - Add new administrators and customer support employees
-  - Remove employees
-
-============================================================
-PROJECT STRUCTURE
-============================================================
-
-gyanpustak/
-├── app.py              ← Main Flask application
-├── schema.sql          ← Database schema + sample data
-├── requirements.txt    ← Python dependencies
-├── README.txt          ← This file
-├── templates/
-│   ├── base.html
-│   ├── landing.html
-│   ├── navbar.html
-│   ├── student_login.html
-│   ├── student_register.html
-│   ├── employee_login.html
-│   ├── student_dashboard.html
-│   ├── book_detail.html
-│   ├── student_cart.html
-│   ├── checkout.html
-│   ├── student_orders.html
-│   ├── order_detail.html
-│   ├── student_reviews.html
-│   ├── student_tickets.html
-│   ├── student_profile.html
-│   ├── cs_dashboard.html
-│   ├── cs_ticket_detail.html
-│   ├── cs_create_ticket.html
-│   ├── cs_orders.html
-│   ├── admin_dashboard.html
-│   ├── admin_ticket_detail.html
-│   ├── admin_add_book.html
-│   ├── admin_edit_book.html
-│   ├── admin_course_books.html
-│   ├── superadmin_dashboard.html
-│   └── superadmin_add_employee.html
-└── static/
-    ├── css/style.css
-    └── js/main.js
-
-============================================================
+License
+This project is developed for academic purposes.
