@@ -4,7 +4,7 @@ GyanPustak is a web-based platform designed for college students to buy, rent, a
 
 The application is built using Flask, Jinja2, and MySQL.
 
-
+Demo Video Link:https://drive.google.com/file/d/1cFmM0UOc-_vbf6tMJrXLwQ3ak0o2UzsV/view?usp=sharing
 ---
 
 ## Overview
